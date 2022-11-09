@@ -1,0 +1,73 @@
+<?php require_once ('inc_file/header.php');?>
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+.payment {
+	width: 650px;
+	min-height: 150px;
+	text-align: center;
+	border: 1px solid #ddd;
+	margin: 0 auto;
+	padding: 50px;
+	margin-top: 30px;
+	margin-bottom: 20px;
+}
+.payment h2 {
+	border-bottom: 1px solid #ddd;
+	margin-bottom: 40px;
+	padding-bottom: 25px;
+}
+.payment a {
+	background-color: #ff0000;
+	border-radius: 3px;
+	color: #fff;
+	font-size: 25px;
+	padding: 5px 30px;
+	text-decoration: none;
+	cursor: pointer;
+	transition: all .3s;
+}
+
+.payment a:hover {
+	background-color: #fff;
+
+	color: #ff0000;
+
+}
+
+.back a{
+	width: 160px;
+	margin:5px auto 0;
+	padding: 7px 0;
+	text-align: center;
+	display: block;
+	background-color: #555;
+	border:1px solid #333;
+	border-radius: 3px;
+	font-size: 25px;
+	text-decoration: none;
+	color: #fff;
+}
+</style>
+</head>
+<body>
+
+    <div class="wrapper">
+		<div class="payment">
+			<h2>Chouse Payment Option</h2>
+
+		 	<!-- <a href="offline_payment.php" class="shop_btn">Offline Payment</a> -->
+		 	<a href="offline_payment.php">Payment</a>
+		 	<!-- <a href="offline_payment.php">Offline Payment</a> -->
+
+		    <!-- <a href="online_payment.php">Online Payment</a> -->
+
+
+		</div>
+		<div class="back">
+			<a href="cart.php">Previous</a>
+		</div>
+    </div>
+</body>
+</html>

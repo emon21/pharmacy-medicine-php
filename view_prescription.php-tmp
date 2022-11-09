@@ -1,0 +1,219 @@
+<?php
+
+session_start();
+require_once ('dbcon.php');
+?>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>User Page</title>
+
+  <!-- Bootstrap core CSS -->
+  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Custom styles for this template -->
+  <link href="css/simple-sidebar.css" rel="stylesheet">
+
+  <style>
+
+      .navbar-nav .dropdown-menu {
+    position: static;
+    float: none;
+    margin-top: 11px;
+    border-color: #292d2d;
+}
+
+.rounded-circle {
+    border-radius: 50% !important;
+    padding: 35px;
+    /* width: 200px; */
+    /* height: 200px; */
+    text-align: center;
+}
+
+.user_profile {
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  float: left;
+}
+
+#customers {
+  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#customers td, #customers th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+#customers tr:nth-child(even){background-color: #f2f2f2;}
+
+#customers tr:hover {background-color: #ddd;}
+
+#customers th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #4CAF50;
+  color: white;
+}
+  </style>
+
+</head>
+
+<body>
+
+  <div class="d-flex" id="wrapper">
+
+    <!-- Sidebar -->
+<?php require_once ('inc_file/side_bar.php');?>
+<!-- /#sidebar-wrapper -->
+
+    <!-- Page Content -->
+
+
+    <div id="page-content-wrapper">
+
+      <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
+        <button class="btn btn-primary" id="menu-toggle">Toggle Menu</button>
+
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+          <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
+
+
+             <img class="user_profile" src="images/img_avatar3.png">
+            <li class="nav-item dropdown">
+
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+<?php echo $_SESSION['name'];?>
+              </a>
+              <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="#">Another action</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="logout.php">Log Out</a>
+
+              </div>
+            </li>
+
+          </ul>
+        </div>
+
+      </nav>
+
+      <div class="container-fluid">
+        <h1 class="mt-4">Wel Come To DashBoard</h1><br/>
+
+
+        <div class="container">
+  <h2>All Data</h2>
+  <p>Combine .table-dark and .table-striped to create a dark, striped table:</p>
+
+
+
+     <!--  <td>
+
+  <video width="400" controls="false">
+     <source src="upload_file/<?php echo $value['our_file'];?>" type="video" media="all">
+   </video>
+
+       </td> -->
+
+<table id="customers" border="1">
+  <tr>
+    <th>Sl NO</th>
+    <th>Name</th>
+    <th>Age</th>
+    <th>Gender</th>
+    <th>problem</th>
+    <th>Weight</th>
+    <th>Medicine_name</th>
+    <th>Dose</th>
+    <th>Day</th>
+    <th>Test</th>
+    <th>Advice</th>
+    <th>Action</th>
+
+  </tr>
+<?php
+
+// $c = '';
+// $d = '';
+// $cd =0;
+
+//    $mysqli= mysqli_connect("localhost","root","","sajid_std_project");
+// $result = $mysqli->query("SELECT * FROM our_faclty");
+
+$result  = "SELECT * FROM create_prescription";
+$run_qry = mysqli_query($db, $result);
+$count   = 1;
+foreach ($run_qry as $value) {
+
+	?>
+	  <tr>
+	    <td><?php echo $count;?></td>
+	    <td><?php echo $value['name'];?></td>
+	    <td><?php echo $value['age'];?></td>
+	    <td><?php echo $value['sex'];?></td>
+	    <td><?php echo $value['problem'];?></td>
+	    <td><?php echo $value['weight'];?></td>
+	    <td><?php echo $value['medicine_name'];?></td>
+	    <td><?php echo $value['dose'];?></td>
+	    <td><?php echo $value['day'];?></td>
+	    <td><?php echo $value['test'];?></td>
+	    <td><?php echo $value['advice'];?></td>
+	    <td><a href="view_prescription.php?view_id=<?php echo $value['id']?>">View</a></td>
+	    <!-- <td><img src="upload_file/<?php echo $value['our_file'];?>" alt=""></td> -->
+
+	    <!-- <td><a href="option_list.php?view_id=<?php echo $value['id']?>">View</a> | <a href="option_list.php?del_id=<?php echo $value['id']?>">Delete</a></td> -->
+	  </tr>
+	<?php
+	$count++;
+
+}
+
+?>
+</table>
+
+
+
+</div>
+
+      </div>
+
+    </div>
+    <!-- /#page-content-wrapper -->
+
+
+  </div>
+  <!-- /#wrapper -->
+
+  <!-- Bootstrap core JavaScript -->
+  <script src="vendor/jquery/jquery.min.js"></script>
+  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Menu Toggle Script -->
+  <script>
+    $("#menu-toggle").click(function(e) {
+      e.preventDefault();
+      $("#wrapper").toggleClass("toggled");
+    });
+  </script>
+
+</body>
+
+</html>

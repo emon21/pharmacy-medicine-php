@@ -1,0 +1,285 @@
+*, *:before, *:after {
+  box-sizing: border-box; }
+
+.rm-togglebutton,
+.rm-subtoggle {
+  margin: 5px;
+  padding: 5px 10px;
+  border-right: 1px solid #23B0ED;
+  /*background-image: url("../images/menuicon.png");
+  background-repeat: no-repeat; */
+  outline: none;
+  background: #fff;
+  color: #0072B3;
+  border-radius: 5px;
+  font-size: 1em;
+  cursor: pointer; 
+  
+  }
+  .rm-togglebutton:hover,
+  .rm-subtoggle:hover {
+    text-decoration: underline; }
+  .rm-togglebutton:focus,
+  .rm-subtoggle:focus {
+    text-decoration: underline; }
+
+.rm-subtoggle {
+  margin: 5px;
+  float: left; }
+
+.navigation_container {
+	/* border-top: 10px solid #0454A2; */
+	background: #6AA2CA;
+	border-bottom: 2px solid #ccc;
+	color: #000;
+	height: 42px;
+	margin-top: 0px;
+	
+}
+  .navigation_container ul {
+    width: 100%;
+    max-width:1170px;
+    margin: 0 auto;
+    padding: 0;
+    list-style: none; 
+	float: right;
+	}
+	@media (min-width: 1024px) { 
+		.navigation_container {
+	/*! border-top: 10px solid #0454A2; */
+	/*! background: #7CCABE; */
+	border-bottom: 2px solid #ccc;
+	color: #fff;
+	height: 42px;
+	margin:0 auto;
+}
+	}
+    @media (min-width: 600px) {
+      .navigation_container ul {
+        height: 40px;
+		margin-right:-20%;
+		 } }
+  .navigation_container ul:before,
+  .navigation_container ul:after {
+    display: table;
+    content: " "; }
+  .navigation_container ul:after {
+    clear: both; }
+  .navigation_container .rm-closed li.rm-parent > a:after,
+  .navigation_container .rm-fullmenu li.rm-parent > a:after {
+    /*content: " \25bc";*/
+		border-right: 1px solid #23B0ED;
+		height:auto;
+	 }
+  .navigation_container .rm-closed li.parent > a:after,
+  .navigation_container .rm-fullmenu li.parent > a:after {
+    content: " \25b6"; }
+  .navigation_container li {
+    padding: 0; }
+    @media (min-width: 600px) {
+      .navigation_container li {
+        height: 40px;
+        float: left;
+		 } 
+		 }
+    .navigation_container li.focused, .navigation_container li:hover a,
+    .navigation_container li a:hover,
+    .navigation_container li a:focus {
+      background: #fff; }
+  .navigation_container .rm-opened li {
+  	width: 100%;
+    float: left; }
+.navigation_container li a:hover{
+	 	background:#D5EFFC;
+		color:#23B0ED;
+		
+	 }
+  .navigation_container a {
+    display: block;
+    color: #151515;
+    padding: 8px 20px;
+    line-height: 24px;
+    text-decoration: none;
+	font-family: 'Roboto', sans-serif;
+	font-weight:400;
+	text-transform:uppercase;
+    height: auto; 
+	border-right: 1px solid #ccc;
+	
+	}
+    .navigation_container a:after {
+      font-size: 12px;
+      vertical-align: middle;
+      line-height: normal;
+      text-decoration: none; }
+  .navigation_container .active a,
+  .navigation_container .active a:hover,
+  .navigation_container .active a:focus {
+    background: #fff;
+    color: #333;
+    cursor: default; }
+  .navigation_container .rm-closed li,
+  .navigation_container .rm-fullmenu li {
+    overflow: visible;
+	height:auto;
+	 }
+    .navigation_container .rm-closed li ul,
+    .navigation_container .rm-fullmenu li ul {
+      height: auto;
+      background: #2c3e50;
+      padding: 0;
+      width: 300px;
+      border-top: none; 
+	  
+	  }
+      @media (min-width: 600px) {
+        .navigation_container .rm-closed li ul,
+        .navigation_container .rm-fullmenu li ul {
+          transition: transform 0.1s cubic-bezier(0.195, 0.4, 0.45, 0.785);
+          transform: scaleY(0);
+          transform-origin: 0 0; } }
+    .navigation_container .rm-closed li.rm-focused > ul, .navigation_container .rm-closed li:hover > ul,
+    .navigation_container .rm-fullmenu li.rm-focused > ul,
+    .navigation_container .rm-fullmenu li:hover > ul {
+      display: block; }
+      @media (min-width: 600px) {
+        .navigation_container .rm-closed li.rm-focused > ul, .navigation_container .rm-closed li:hover > ul,
+        .navigation_container .rm-fullmenu li.rm-focused > ul,
+        .navigation_container .rm-fullmenu li:hover > ul {
+          transform: scaleY(1); } }
+    @media (min-width: 600px) {
+      .navigation_container .rm-closed li.rm-focused li ul, .navigation_container .rm-closed li:hover li ul,
+      .navigation_container .rm-fullmenu li.rm-focused li ul,
+      .navigation_container .rm-fullmenu li:hover li ul {
+        transform: scaleX(0); } }
+    @media (min-width: 600px) {
+      .navigation_container .rm-closed li.rm-focused li.rm-focused > ul, .navigation_container .rm-closed li.rm-focused li:hover > ul, .navigation_container .rm-closed li:hover li.rm-focused > ul, .navigation_container .rm-closed li:hover li:hover > ul,
+      .navigation_container .rm-fullmenu li.rm-focused li.rm-focused > ul,
+      .navigation_container .rm-fullmenu li.rm-focused li:hover > ul,
+      .navigation_container .rm-fullmenu li:hover li.rm-focused > ul,
+      .navigation_container .rm-fullmenu li:hover li:hover > ul {
+        transform: scaleX(1); } }
+    .navigation_container .rm-closed li li,
+    .navigation_container .rm-fullmenu li li {
+      float: none;
+	  height:auto;
+	  border-bottom: 1px solid #ccc;
+	  order-right: 1px solid #ccc;
+	  order-left: 1px solid #ccc;
+	   }
+      .navigation_container .rm-closed li li.rm-focused > a, .navigation_container .rm-closed li li:hover > a,
+      .navigation_container .rm-closed li li a:hover,
+      .navigation_container .rm-closed li li a:focus,
+      .navigation_container .rm-fullmenu li li.rm-focused > a,
+      .navigation_container .rm-fullmenu li li:hover > a,
+      .navigation_container .rm-fullmenu li li a:hover,
+      .navigation_container .rm-fullmenu li li a:focus {
+        text-decoration: none;
+        collor: #0454A2;
+		background:#EEF5FA;
+		height:auto;
+		
+         }
+
+
+/**
+ * When JS is enabled
+ *
+ * 1. We can use display none because we set display block again with JS immediately after initiating the menu
+ * 2. Display menu when initiated
+ * 3. Display menu on "desktop"
+ * 4. Display focused items
+ */
+.js .navigation_container {
+  display: none;
+  /* 1 */ }
+
+.js .navigation_container.rm-initiated {
+  display: block;
+  /* 2 */ }
+
+@media (min-width: 600px) {
+  .js .navigation_container {
+    display: block;
+    /* 3 */ } }
+.js .navigation_container .rm-focused {
+  overflow: visible;
+  /* 4 */ }
+
+/**
+ * When JS is either disabled or enabled
+ *
+ * 1. Relative to position li > ul items
+ * 2. Hide overflowing content so we can display on tabbing
+ * 3. Display on hover / focus
+ * 4. Children should have position absolute to hide them
+ */
+.navigation_container li {
+  position: relative;
+  /* 1 */ }
+
+@media (min-width: 600px) {
+  .navigation_container li {
+    overflow: hidden;
+    /* 2 */ }
+
+  .navigation_container li:hover, .navigation_container li:focus {
+    overflow: visible;
+    /* 3 */ } }
+@media (min-width: 600px) {
+  .navigation_container li ul {
+    position: absolute;
+    /* 4 */ } }
+.navigation_container {
+  position: relative;
+  }
+
+@media (min-width: 600px) {
+  .navigation_container li ul {
+    position: absolute;
+    left: -9999px;
+    top: 100%;
+    z-index: 1;
+    width: 100%; } }
+
+@media (min-width: 992px) and (max-width: 1199px) {
+
+.navigation_container {
+    width: 100%;
+  }
+.navigation_container {
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+  }
+ .navigation_container a {
+    display: block;
+    color: #000;
+    padding: 8px 10px;
+    line-height: normal;
+    text-decoration: none;
+	font-family: 'Roboto', sans-serif;
+	font-weight:500;
+	text-transform:uppercase;
+    height: auto; }
+  }
+  
+.navigation_container li li {
+  position: relative;
+  float: left; 
+  height:auto;
+  }
+
+.navigation_container .rm-focused > ul,
+.navigation_container li:hover > ul {
+  left: 0; }
+
+.navigation_container li .rm-focused > ul,
+.navigation_container li li:hover > ul {
+  left: 100%;
+  top: 0; }
+
+/*# sourceMappingURL=responsivemenu.css.map */
+
+/*# sourceMappingURL=demo.css.map */

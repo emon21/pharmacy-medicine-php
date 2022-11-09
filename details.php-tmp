@@ -1,0 +1,104 @@
+<?php
+require_once ('inc_file/header.php');
+require_once ('dbcon.php');
+$sid = session_id();
+//echo $sid;
+if (isset($_GET['details_id'])) {
+
+	$id = $_GET['details_id'];
+
+	if (isset($_POST['cart'])) {
+
+		//$pro_id = $_POST['id'];
+		$quentity = $_POST['quentity'];
+		//$quentity = $_POST['quentity'];
+
+		$sel    = "SELECT * FROM all_medicine WHERE id='$id'";
+		$result = mysqli_query($db, $sel);
+		$row    = mysqli_fetch_assoc($result);
+
+		$pro_name = $row['medicine_name'];
+		$pro_img  = $row['img'];
+		// $pro_name =  $row[''];
+
+		$total_price = $quentity*$row['price'];
+
+		$check_qry = "SELECT * FROM cart WHERE  pro_id='$id' AND session_id='$sid'";
+
+		$qrye     = mysqli_query($db, $check_qry);
+		$totalrow = mysqli_num_rows($qrye);
+		if ($totalrow > 0) {
+			echo "<script>
+
+    window.alert('Data Alreday Insert !!');
+    window.location.href='cart.php';
+    </script>";
+		} else {
+
+			$ins_qry = "INSERT INTO cart(session_id,pro_id,pro_name ,pro_qty,pro_price,pro_img) VALUES ('$sid','$id','$pro_name','$quentity','$total_price','$pro_img')";
+
+			$run_qry = mysqli_query($db, $ins_qry);
+			if ($run_qry) {
+				header("location: cart.php");
+			} else {
+				echo "Something Wrong...!!";
+			}
+		}
+
+	}
+
+}
+?>
+<section id="medicine">
+		<div class="wrapper">
+			<h2>Medicine Page</h2>
+
+<?php require_once ('dbcon.php');
+
+if (isset($_GET['details_id'])) {
+	$id   = $_GET['details_id'];
+	$show = "SELECT * FROM all_medicine where id='$id'";
+
+	$ser_result = mysqli_query($db, $show);
+
+	while ($row = mysqli_fetch_array($ser_result)) {
+
+		?>
+			<div class="medicinedetails">
+
+				<div class="medicine_img">
+					<img src="admin/medicine_pic/<?php echo $row['img'];?>" alt="">
+				</div>
+
+				<div class="medicine_details_info">
+
+		<?php echo $row['medicine_name'];?>
+					<p>Price :<?php echo $row['price'];?>/-</p>
+					<form action="details.php?details_id=<?php echo $row['id']?>" method="post">
+
+						<input type="number" name="quentity" class="form_input" value="<?php echo $row['quentity'];?>">
+						<input type="submit" value="Buy Now" class="buy_now" name="cart">
+					</form>
+					<span style="color: red;font-size: 20px">
+						<!-- <?php
+		if (condition) {
+			# code...
+		}?> -->
+					</span>
+				</div>
+
+				<div class="medicine_dec">
+					<div class="product_details">
+						<h2>Product Details</h2>
+					</div>
+					<p><?php echo $row['medicine_des'];?></p>
+				</div>
+
+			</div>
+		<?php }}?>
+</div>
+</section>
+
+
+
+<?php require_once ('inc_file/footer.php');?>

@@ -1,0 +1,104 @@
+<?php
+	require_once('dbcon.php');
+
+	
+	
+	$user_name = "";
+	$mob_no = "";
+	$user_email  = "";
+	$user_pass = "";
+	
+	if(isset($_POST['add_user'])){
+		
+	$user_name = $_POST['user_name'];
+	$mob_no = $_POST['mob_no'];
+	$user_email  = $_POST['user_email'];
+	$user_pass = $_POST['user_pass'];
+	$user_type = "customer";
+	
+	//$pattern = "/^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,})$/i";
+		
+		$regex = '/^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,3})$/i'; 
+		//$user_email = (preg_match($regex, $user_email))?
+	
+		
+		
+		
+	
+
+	if(empty($user_name))
+        
+        {
+        
+        $user_error = "User Name IS Required *";
+        //echo "<script>alert('$error_message')</script>";
+        }
+
+
+        if(empty($mob_no))
+        
+        {
+        
+        $mob_error = "Mobile No IS Required *";
+        //echo "<script>alert('$error_message')</script>";
+        }
+       
+   if(empty($user_email))
+        
+        {
+        
+        // $email_error = "E-mail is Required *";
+        //echo "<script>alert('Roll Missing...!!')</script>";
+		
+		$user_email = "Email IS Required"; 
+	
+        
+        }
+	
+ if(empty($user_pass))
+        
+        {
+        
+         $pass_error = "Password  is Required *";
+        //echo "<script>alert('Roll Missing...!!')</script>";
+        
+        }
+		
+else if(!is_numeric($mob_no))
+    {
+    $mob_error = "Only Number";
+    //echo "<script>alert('$message')</script>";
+    }
+
+	else
+			
+			{
+
+				
+			
+					// Insert Query for DB//
+
+				$insert_user = "insert into reg_user(user_name,mob_no ,email,password,user_type) VALUES ('$user_name','$mob_no','$user_email','$user_pass','$user_type')";
+			$run_user = mysqli_query($db,$insert_user);
+			
+		if($run_user)
+				{
+					//$success_message = "User Has Been Inserted...";
+					//echo '<script>alert($success_message)</script>';
+					//header('location:register.php');
+
+					echo "<script>alert('Our User Insertd Successfully.....!!')</script>";
+					header('location:register.php');		
+				}
+					
+		else
+			{
+							
+				$error_message = "Our User Not Insertd Please TrY";
+				}
+			 exit();
+	}
+	
+}
+
+?>

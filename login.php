@@ -1,0 +1,63 @@
+<?php 
+
+
+require_once('inc_file/header.php'); ?>
+	
+	
+
+	<section id="register">
+		
+	<div class="wrapper">
+		
+		<div class="login_box">
+			<p style="font-size: 20px;line-height: 35px;color: #0088cc;margin-left: 15px;padding-top: 20px;float: left;">New User </p>
+                <a href="reg.php" class="btn_login">Sign UP</a>
+                <div class="clear"></div>
+			<div class="box_content">
+				<h2>LOGIN</h2>
+				<div class="reg_form">
+					<form action="check_user.php" method="post">
+					
+					<div class="reg_in">
+						<span class="user_label">Enter E-mail *</span>
+						<input type="text" placeholder="Enter Your E-mail" class="log_input" name="facultyemail">
+					</div>
+
+					<div class="reg_in">
+						<span class="pass_label">Password</span>
+						<input type="password" placeholder="Enter Your User Name" class="log_input" name="password">
+					</div>
+					
+						<!--div <?php if(isset($pass_error)):?>
+						class="form_error"
+						<?php endif ?>
+						>
+						
+						<span class="user_label">User Type : </span>
+						<select name="user_type" id="user_type">
+						  <option value="">>> User Type <<</option>
+						  <option value="dr">DR</option>
+						  <option value="farmest">farmest</option>
+						  <option value="user">user</option>
+						</select>
+						
+					</div-->
+
+					<input type="submit" class="log_btn" value="Login">
+
+					
+
+					
+				</form>
+
+
+				</div>
+			</div>
+		</div>
+	</div>
+	</section>
+
+	
+
+
+	<?php require_once('inc_file/footer.php'); ?>

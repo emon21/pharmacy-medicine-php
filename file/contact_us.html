@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Home :: Page</title>
+	<link rel="stylesheet" href="css/design.css">
+</head>
+<body>
+	<header id="top_header">
+		<div class="top_bar">
+			<div class="wrapper">
+				<div class="topmenu">
+				<ul>
+					<li><a href="">Register</a></li>
+					<li><a href="">Login</a></li>
+					
+				</ul>
+			</div>
+			</div>
+		</div>
+
+		<div class="main_area">
+			<div class="wrapper">
+				<div class="logo">
+					<img src="images/parmacy_logo.png" alt="">
+					<h2>Pharmacy BD</h2>
+				</div>
+				<div class="search">
+					<form action="" method="post">
+						<input type="text" placeholder="Searching Your Madicen...!!">
+					</form>
+				</div>
+				<div class="boking">Cart (0)</div>
+			</div>
+		</div>
+		
+		<div class="wrapper">
+			<div class="main_menu">
+				<ul>
+					<li><a href="index.html">Home</a></li>
+					<li><a href="medicine.html">Medicine</a></li>
+					<li><a href="gallery.html">Gallery</a></li>
+					<li><a href="about_us.html">About US</a></li>
+					<li><a href="contact_us.html">Contact US</a></li>
+				</ul>
+			</div>
+		</div>
+	</header>
+	
+	<section id="contact_us">
+		
+	<h2>Contact US</h2>
+
+		<div class="all_contact">
+			<div class="wrapper">
+				<!--div class="contact_type">
+				dsgvdfh
+				</div>
+
+				<div class="contact_type">
+				dsgvdfh
+				</div>
+
+				<div class="contact_type">
+				dsgvdfh
+				</div>
+
+				<div class="contact_type">
+				dsgvdfh
+				</div-->
+				<div id="googleMap" style="height:350px;width:100%;"></div>
+ <script>
+	
+        function myMap() {
+            //var myCenter = new google.maps.LatLng(23.745069, 90.412718);
+            var myCenter = new google.maps.LatLng(23.745124, 90.412744);
+            var mapProp = {
+                center: myCenter,
+                zoom: 18,
+                scrollwheel: false,
+                draggable: false,
+                mapTypeId: google.maps.MapTypeId.ROADMAP
+            };
+            var map = new google.maps.Map(document.getElementById("googleMap"), mapProp);
+            var marker = new google.maps.Marker({
+                position: myCenter
+            });
+            infowindow = new google.maps.InfoWindow({
+                content: '<div class="map"> <strong style="color:#206040;font-size:20px;font-weight:bold;">Grameen Star IT Education</strong><br>New Circular Road,Siddeshwari,Mouchak<br>Dhaka-1217,Bangladesh.<br></div>'
+            });
+            google.maps.event.addListener(marker, 'click', function() {
+                infowindow.open(map, marker);
+            });
+            infowindow.open(map, marker);
+            marker.setMap(map);
+        }
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVHX31IdCnPtmHXxH-rhPfymfyMpunhhM &callback=myMap"></script>
+
+
+				<div class="contact_info">
+				<div class="contact_map">
+					<h2>Online Pharmacy Store</h2>
+					<hr>
+					<p class="contact_p">
+					Please Read Our Faq Before Sending US a Message.</p>
+					<p class="contact_pp">How Does Online Pharma Website Works?</p>
+					<p class="contact_pp">How Mouch Do Deliveries Cost?</p>
+					<p class="contact_pp">What Are Your Delivery Hours?</p>
+					<p class="contact_pp">How Do I Pay?</p>
+					<p class="contact_pp">What Exactly happens after ordering?</p>
+					<p class="contact_pp">How Are You Sourcing Ypour Products?</p>
+
+
+
+
+
+				</div>
+					<div class="contact_form">
+						<h2>Email TO Medicine Shop IN Bangladesh</h2>
+
+						<p class="contact_form_h2">Contact Form</p>
+
+						<form action="" method="post">
+					
+						<input type="text" name="con_name" placeholder="Enter Your Name..." class="input_box"><br/>
+					
+					
+						<input type="text" name="con_email" placeholder="Enter Your Email..." class="input_box2"><br/>
+					
+
+					<input type="text" name="con_subject" placeholder="Enter Your Subject..." class="input_box3"><br/>
+					
+
+					<textarea  rows="5" id="comment" placeholder="Your Message...!" name="con_massage"></textarea>
+					
+					<input type="submit" name="message_send" id="" value="Send" class="send">
+					
+					</form>
+					</div>
+		</div>
+		</div>
+			</div>
+
+
+
+		</div>
+
+		<div class="wrapper">
+			
+
+	</section>
+
+	
+
+	<footer id="footer">
+		<div class="wrapper">
+			<div class="footer_area">
+			<div class="copy_right">&copy; Pharmacy BD | 2019 By Setu</div>
+			<div class="footer_menu">
+				
+				<a href=""><img src="images/facebook.png" alt="Facebook"></a>
+				<a href=""><img src="images/linkdin.png" alt="Linkdin"></a>
+				<a href=""><img src="images/google_plus.png" alt="Google+"></a>
+				<a href=""><img src="images/intragrm.png" alt="Intragram"></a>
+				<a href=""><img src="images/twitter.png" alt="Twitter"></a>
+				<a href=""><img src="images/youtube.png" alt="Youtube"></a>
+
+			</div>
+		</div>
+		</div>
+	</footer>
+
+</body>
+</html>

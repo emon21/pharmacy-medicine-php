@@ -1,0 +1,117 @@
+<?php 
+		require_once('dbcon.php');
+
+		// $cus_name = $cus_address = $cus_city = $cus_country = $cus_zip_code = $cus_phone = $cus_email = $cus_password = "";
+		$cus_name		    = "";
+ 		$cus_address		= "";
+ 		$cus_city 			= "";
+ 		$cus_country 		= "";
+ 		$cus_zip_code		= "";
+ 		$cus_phone		    = "";
+ 		$cus_email	    	= "";
+ 		$cus_password	    = "";
+
+ 		$error = array('cus_name'=>'','cus_address'=>'','cus_city'=>'','cus_country'=>'','cus_zip_code'=>'','cus_phone'=>'','cus_email'=>'','cus_password'=>'');
+
+	if (isset($_POST['customer_reg'])) {
+		
+		$cus_name		    = $_POST['cus_name'];
+ 		$cus_address		= $_POST['cus_address'];
+ 		$cus_city 			= $_POST['cus_city'];
+ 		$cus_country 		= $_POST['cus_country'];
+ 		$cus_zip_code		= $_POST['cus_zip_code'];
+ 		$cus_phone		    = $_POST['cus_phone'];
+ 		$cus_email	    	= $_POST['cus_email'];
+ 		$cus_password	    = $_POST['cus_password'];
+
+ 		$sel_e = "SELECT * FROM customer WHERE cus_email='$cus_email'";
+ 		$res_e = mysqli_query($db,$sel_e);
+
+ 		 if (empty($_POST['cus_name'])) {
+   			 $error['cus_name'] = "User Name is Required";
+		  }
+		  else{
+		    $cus_name = $_POST['cus_name'];
+		    if (!preg_match('/^[a-zA-Z\s]*$/',$cus_name)) {
+		     $error['cus_name'] = "User Name must be letter allowed";
+		    }
+		   // echo htmlspecialchars($_POST['user_name']);
+		  }
+
+		 $cus_phone = $_POST['cus_phone'];
+ 	  if (empty($cus_phone)) {
+ 		   $error['cus_phone'] = "Mobile Number is Required";
+		  }
+
+	  else{
+
+	   if(!is_numeric($cus_phone))
+	    {
+	   $error['cus_phone'] = "Only Number";
+	    //echo "<script>alert('$message')</script>";
+	    }
+	     
+	    else if(strlen($cus_phone) !=11) {
+	        $error['cus_phone'] = " Only 11 digit Number";
+	    } 
+	   // echo htmlspecialchars($_POST['mob_no']);
+	  }
+
+
+	if (empty($_POST['cus_email'])) {
+     $error['cus_email'] = "User E-mail is Required";
+ 		 }
+ 		 
+ 	 else{
+    $cus_email = $_POST['cus_email'];
+    if (!filter_var($cus_email,FILTER_VALIDATE_EMAIL)) {
+      $error['cus_email'] = "email must be a >> this format abc@mail.com";
+     // $error['user_email'] = "email must be a valid email";
+    }
+
+    else if(mysqli_num_rows($res_e) > 0) {
+
+ 		$error['cus_email'] = "Sorry !! Your E-mail IS Alreday Taken";
+ 		// echo "<script>
+         
+      //  window.alert('Sorry !! Your E-mail IS Alreday Taken')
+       // </script>";
+	
+	
+ 		 }
+    //echo htmlspecialchars($_POST['user_email']);
+  }
+
+   if (empty($_POST['cus_password'])) {
+     $error['cus_password'] = "user Password is Required";
+  }
+
+ 	 if (array_filter($error)) {
+    
+     // echo "error in from";
+     // echo "<script>// window.location.href='user_customer.php';
+     echo "<script>
+    window.alert('Data Not  Insert !! Please Fill up the From');
+   
+    </script>";
+
+  }	 
+
+ 	else{
+
+		$up_qry =  "INSERT INTO customer(cus_name,cus_address,cus_city,cus_country,cus_zip_code,cus_phone,cus_email,cus_password) VALUES ('$cus_name','$cus_address','$cus_city','$cus_country','$cus_zip_code','$cus_phone','$cus_email','$cus_password')";
+		$update = mysqli_query($db,$up_qry);
+
+	      if ($update) {
+
+	          echo "<script>
+	         
+	        window.alert('Data Inserted Successfully ...!!');
+	        window.location.href='user_customer.php';
+	        </script>";
+	       
+		}
+	}
+}
+
+ ?>

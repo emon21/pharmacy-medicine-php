@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Verify Page</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<div class="container">
+
+  <div class="col-sm-3"></div>
+
+  <div class="col-sm-6">
+  	<h2>Verify Information :</h2>
+  <form action="" method="post">
+    
+    <div class="form-group">
+      <label>Your OTP:</label>
+      <input type="number" class="form-control" placeholder="Enter Your OTP" name="otp">
+    </div>
+    
+    <button type="submit" class="btn btn-success" name="send_otp">Verify OTP</button>
+  </form>
+</div>
+  <div class="col-sm-3"></div>
+</div>
+<?php
+
+require_once('dbcon.php');
+if (isset($_POST['send_otp'])) {
+
+//$otp=$_POST['otp'];
+
+$user_otp=$_POST['otp'];
+//$email=$_SESSION['EMAIL'];
+$res=mysqli_query($db,"select * from customer where otp='$otp'");
+$row =mysqli_fetch_assoc($res);
+$id=$row['id'];
+$otp=$row['otp'];
+
+//$count=mysqli_num_rows($res);
+if($otp==$user_otp){
+  mysqli_query($db,"UPDATE customer SET account_status='1',user_otp='$otp' where id='$id'");
+  //$_SESSION['IS_LOGIN']=$email;
+ // echo "yes";
+  
+    echo "<script>
+          alert('Your OTP IS Verify...!!');
+          window.location.href='user_login.php';
+          </script>"; 
+  
+}else{
+
+  echo "<script>
+          alert('Wrong OTP');
+          window.location.href='Verify.php';
+          </script>"; 
+}
+
+ 
+}
+?>
+</body>
+</html>

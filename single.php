@@ -1,0 +1,58 @@
+<?php 
+
+require_once('dbcon.php');
+
+if (isset($_GET['details_id'])) {
+  
+  $id = $_GET['details_id'];
+
+
+
+	
+	 $sel = "SELECT * FROM all_medicine WHERE id='$id'";
+      $result = mysqli_query($db,$sel);
+      $row = mysqli_fetch_assoc($result);
+
+      $pro_name =  $row['img'];
+     $pro_img  =  $row['price'];
+
+  
+
+     if (isset($_POST['cart'])) {
+
+       $ins_qry ="INSERT INTO cart(pro_name,pro_price) VALUES ('$pro_name','$pro_img')";
+
+	  $run_qry = mysqli_query($db,$ins_qry);
+		  if ($run_qry) {
+		   header("location: cart.php");
+		  	//echo "Data Insert...!!";
+		  }
+	
+ 	} 
+
+} 
+
+ ?>
+
+
+ <?php 
+require_once('dbcon.php');
+$sel = "SELECT * FROM all_medicine";
+      $result = mysqli_query($db,$sel);
+     
+while ( $row = mysqli_fetch_assoc($result)) {
+
+
+  ?>
+	<!-- <form action="details.php?details_id=<?php echo $row['id'] ?>" method="post"> -->
+ <form action="single.php?details_id=<?php echo $row['id'] ?>" method="post" enctype="multipart/form-data">
+					<img src="admin/medicine_pic/<?php echo $row['img'];?>" alt="">
+
+				<p><?php  echo $row['price']; ?></p>
+				
+				<input type="submit"  value="Buy Now" class="buy_now" name="cart">
+			</form>
+
+			<?php } ?>
+
+			

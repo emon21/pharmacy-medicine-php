@@ -1,0 +1,91 @@
+
+	*{margin:0;padding:0;}
+	body {
+	background-image: url("../img/lp-meta-hospital-resources.jpg");
+	background-repeat: no-repeat;
+	background-size:cover;
+	
+}
+.login_box {
+	background: #0b05054d;
+	width: 350px;
+	/* height: auto; */
+	margin: 0 auto;
+	padding: 10px;
+	border: 2px solid #08183c;
+	margin-top: 14%;
+}
+.login_box h2 {
+	color: #f8f2ef;
+	font-size: 30px;
+	margin: 0 auto;
+	text-align: center;
+	margin-bottom: 20px;
+	margin: ;
+	padding-top: 10px;
+	border-bottom: 2px solid;
+	/* width: 250px; */
+	padding-bottom: 10px;
+}
+
+.content {
+	color: #2b2726;
+	font-size: 20px;
+	text-align: justify;
+	
+}
+.input_box {
+	padding: 10px;
+	width: 94%;
+	background: transparent;
+	transition: all 1s;
+	color: #f6f6f9;
+	font-size: 18px;
+	/* text-align: bold; */
+}
+.,,,input_box {
+	padding: 5px;
+	width: 350px;
+	height: 32px;
+	border: 1px solid #d7d7d7;
+	float: left;
+	border-bottom: 1px solid #000;
+	color: black;
+}
+
+
+
+.input_box:focus{
+	background:#35252599;
+	color: #fff;
+}
+#submitbtn {
+	width: 40%;
+	font-size: 30px;
+	color: #f6f0ef;
+	height: 50px;
+	padding-top: 2px;
+	cursor: pointer;
+transition: all 1s;
+	border: 0px;
+	border: 1px solid #000;
+	background: #1bb5b7a3;
+}
+#submitbtn:hover{color: red;background: orange;
+	
+}
+
+
+.forget_pass {
+	width: 160px;
+	float: right;
+	height: 22px;
+	padding-top: 10px;
+	margin-top: 2px;
+}
+.forget_pass:hover{
+	color: #fff;
+	
+}
+	
+	

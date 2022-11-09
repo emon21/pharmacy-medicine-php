@@ -1,0 +1,61 @@
+<?php require_once ('inc_file/header.php');?>
+<style>
+#customers {
+  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100% !important;
+}
+
+#customers td, #customers th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+#customers tr:nth-child(even){background-color: #f2f2f2;}
+
+#customers tr:hover {background-color: #ddd;}
+
+#customers th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #4CAF50;
+  color: white;
+}
+</style>
+
+	<div id="ambulance_service">
+
+			<div class="wrapper">
+
+	 <table id="customers">
+  <tr>
+    <th>Sl No</th>
+    <th>Hospital Name </th>
+    <th>Mobile No</th>
+    <th>Ambulance Picture</th>
+  </tr>
+  <tr>
+    <td>Alfreds Futterkiste</td>
+    <td>Maria Anders</td>
+    <td>Germany</td>
+    <td>demo</td>
+  </tr>
+  <tr>
+    <td>Berglunds snabbköp</td>
+    <td>Christina Berglund</td>
+    <td>Sweden</td>
+    <td>demo</td>
+  </tr>
+
+
+
+  </tr>
+</table>
+			</div>
+
+
+	</div>
+
+<?php require_once ('inc_file/footer.php');?>
+

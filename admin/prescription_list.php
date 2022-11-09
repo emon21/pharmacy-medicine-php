@@ -1,0 +1,103 @@
+<?php require_once('conn.php');?>
+<!DOCTYPE HTML>
+<html lang="en-US">
+<head>
+	<meta charset="UTF-8">
+	<title>Home :: Page</title>
+	<link rel="stylesheet" href="css/admin.css" />
+
+	<!--link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<link rel="stylesheet" href="css/dataTables.bootstrap.min.css" /-->
+	<style type="text/css">
+	div.dataTables_wrapper {
+        width: 98%;
+        margin: 0 auto;
+    }
+
+#customers {
+  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#customers td, #customers th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+#customers tr:nth-child(even){background-color: #f2f2f2;}
+
+#customers tr:hover {background-color: #ddd;}
+
+#customers th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #4CAF50;
+  color: white;
+}
+
+	</style>
+	<link rel="stylesheet" type="text/css" href="../css/style.css">
+</head>
+<body>
+<?php require_once('inc_file/sidebar.php');?>
+<div class="content">
+<table id="customers">
+  <tr>
+    <th>SL</th>
+    <th>Name</th>
+    <th>Mobile No</th>
+    <th>Email</th>
+    <th>File</th>
+    <th>Massage</th>
+  
+  
+  </tr>
+  <?php 
+
+      //$userid = $_SESSION['user_id'];
+
+     $show = "SELECT * FROM prescription_upload";
+
+    // $show = "SELECT * FROM tbl_order WHERE customer_id='$userid' ORDER BY product_id DESC";
+        
+        $ser_result=mysqli_query($conn,$show); 
+        $i = 1;
+       
+        while($row=mysqli_fetch_array($ser_result)){
+         
+
+     ?>
+  <tr>
+    <td><?php echo $i;?></td>
+    <td><?php echo $row['name'];?></td>
+    
+     <td><?php echo $row['mob_no'];?></td>
+    <td>
+    <?php echo $row['email'];?>
+    </td>
+    
+       <td>
+      <img src="../upload_file/<?php echo $row['file'];?>" alt="" width="120" height="75">
+    </td>
+      
+   
+    <td><?php echo $row['query'];?></td>
+   
+   
+    	
+   
+    
+    
+    
+  </tr>
+
+<?php $i++;} ?>
+</table>
+
+	
+</div>
+
+</body>
+</html>

@@ -1,0 +1,42 @@
+ <?php require_once ('./dbcon.php');
+
+// session_start();
+
+?>
+
+ <!-- Sidebar -->
+    <div class="bg-light border-right" id="sidebar-wrapper">
+      <div class="sidebar-heading">Medicine Dashboard </div>
+
+      <div class="card" style="width:240px;margin-bottom: 10px;margin-top: 10px;">
+              <img class="card-img-top rounded-circle" src="images/img_avatar3.png" alt="Card image">
+                <div class="card-body">
+
+                <h4 class="card-title"> <?php echo $_SESSION['name'];?></h4>
+                <!-- <p class="card-text"><?php echo $_SESSION['mob_no'];?></p> -->
+        <p class="card-text"><?php echo $userid = $_SESSION['user_id'];?></p><br/>
+
+         <p class="card-text"><?php echo $_SESSION['user_type'];?></p>
+                <a href="my_profile.php?profile_id=<?php echo $_SESSION['user_id'];?>" class="btn btn-primary">See Profile</a>
+
+              </div>
+    </div>
+
+      <div class="list-group list-group-flush">
+        <a href="profile.php" class="list-group-item list-group-item-action bg-light">Home</a>
+
+
+<?php
+if ($_SESSION['user_type'] == "dr") {?>
+	<a href="create_prescription.php" class="list-group-item list-group-item-action bg-light">Create A prescription </a>
+	            <a href="view_prescription.php" class="list-group-item list-group-item-action bg-light">View prescription </a>
+
+
+
+	<?php } else {?>
+	<a href="view_prescription.php" class="list-group-item list-group-item-action bg-light">View prescription </a>
+
+	<?php }?>
+      </div>
+    </div>
+    <!-- /#sidebar-wrapper -->

@@ -1,0 +1,85 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<link rel="stylesheet" href="css/admin.css" />
+</head>
+<body>
+
+	
+<?php require_once('inc_file/sidebar.php');?>
+<div class="content">
+
+		<table id="example" class="table table-striped table-bordered table-hover table-responsive" style="width:100%">
+				
+				<thead>
+		            <tr>
+						<th width="2%">ID</th>
+						<th>CustomerId</th>
+						<th>Product</th>
+						<th>Quentity</th>
+						<th>Price</th>
+						<th>Statuc</th>
+						<th width="15%" text-align="center">Action</th>
+		            </tr>
+		        </thead>
+		<?php
+ require_once('conn.php');
+		if (isset($_GET['cus_id'])) {
+			 $cusID = $_GET['cus_id'];
+		
+		$sql ="SELECT * FROM tbl_order  WHERE customer_id=$cusID";
+		$result = mysqli_query($conn,$sql);
+		$count = 1;
+		foreach($result as $output){ ?>
+		        <tr>
+				
+					<td><?php echo $count;?></td>
+					<td><?php echo $output['customer_id'];?></td>
+					<td><?php echo $output['product_name'];?></td>
+					<td><?php echo $output['quentity'];?></td>
+					<td><?php echo $output['price'];?></td>
+					<!-- <td><?php echo $output['status'];?></td> -->
+					<td>
+				<?php 
+    	
+	    		if ($output['status']=="1") {?>
+					<p style="color:red;font-size:20px;">Pending...!!</p>
+	    		<?php }
+	    		else if($output['status']=="2")
+	    		{ ?>
+					<p style="color:green;font-size:20px;">Payment Success</p>
+				<?php } ?>
+
+
+
+
+			</td>
+			<td>
+
+				<?php 
+    	
+	    		if ($output['status']=="1") {?>
+					<p style="color:red;font-size:20px;">Buy Now</p>
+	    		<?php }
+	    		else if($output['status']=="2")
+	    		{ ?>
+					 <a href="inv.php?invoiceID=<?php echo $output['customer_id'];?>">Invoice</a>
+				<?php } ?>
+				
+
+					
+
+					</td>
+				</tr>
+				<?php $count++; } }
+   ?>
+			</table>
+</div>
+	
+	
+
+	
+</body>
+</html>

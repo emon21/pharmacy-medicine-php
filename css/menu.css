@@ -1,0 +1,60 @@
+.navbar.navbar-inverse {
+	border-radius: 0px;
+	/* color: red; */
+}
+
+.navbar-inverse .navbar-nav > .active > a,
+ .navbar-inverse .navbar-nav > .active > a:focus,
+  .navbar-inverse .navbar-nav > .active > a:hover {
+	color: #f2ebeb;
+	background-color: transparent;
+}
+
+
+.navbar-inverse .navbar-nav > li > a:focus,
+ .navbar-inverse .navbar-nav > li > a:hover {
+	color: #fff;
+	background-color: orange;
+}
+
+.navbar-nav > li > a {
+	/* padding-top: 10px; */
+	/* padding-bottom: 10px; */
+	line-height: 20px;
+	font-size: 18px;
+	transition: all .5s;
+}
+
+.navbar-inverse .navbar-nav > li > a {
+	color: #f1e7e7;
+}
+
+.navbar-inverse .navbar-nav > .open > a,
+ .navbar-inverse .navbar-nav > .open > a:focus,
+  .navbar-inverse .navbar-nav > .open > a:hover {
+	color: #fff;
+	background-color: #999;
+}
+
+.dropdown-menu {
+	position: absolute;
+	top: 100%;
+	left: 0;
+	z-index: 1000;
+	display: none;
+	float: left;
+	min-width: 250px;
+	padding: 5px 0;
+	margin: 2px 0 0;
+	font-size: 14px;
+	text-align: left;
+	list-style: none;
+	background-color: #fff;
+	-webkit-background-clip: padding-box;
+	background-clip: padding-box;
+	/* border: 1px solid #ccc; */
+	border: 1px solid rgba(0,0,0,.15);
+	border-radius: 4px;
+	-webkit-box-shadow: 0 6px 12px rgba(0,0,0,.175);
+	box-shadow: 0 6px 12px rgba(0,0,0,.175);
+}

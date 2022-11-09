@@ -1,0 +1,211 @@
+<?php require_once ('inc_file/header.php');
+$sid = session_id();
+
+?>
+
+
+
+<?php
+
+require_once ('dbcon.php');
+
+if (isset($_POST['update_cart'])) {
+
+	$cartID   = $_POST['cartID'];
+	$quentity = $_POST['quentity'];
+
+	$up_qry = "UPDATE cart SET pro_qty='$quentity' WHERE cart_id='$cartID'";
+	//UPDATE cart SET pro_qty='10' WHERE cart_id='46'
+	$update = mysqli_query($db, $up_qry);
+
+	if ($update) {
+
+		echo "<script>
+           window.alert('Data Update Successfully ...!!');
+           window.location.href='cart.php';
+           </script>";
+
+	}
+
+	if ($quentity <= 0) {
+
+		$showqty = "DELETE FROM cart WHERE  cart_id='$cartID'";
+		$shdel   = mysqli_query($db, $showqty);
+
+	}
+
+}
+
+if (isset($_GET['del_ID'])) {
+
+	$cartID = $_GET['del_ID'];
+
+	$show  = "DELETE FROM cart WHERE  cart_id='$cartID'";
+	$shdel = mysqli_query($db, $show);
+
+	if ($shdel) {
+
+		echo "<script>
+
+          window.alert('Data Delete Successfully ...!!');
+          window.location.href='cart.php';
+          </script>";
+
+	}
+
+}
+?>
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+#customers {
+  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#customers td, #customers th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+#customers tr:nth-child(even){background-color: #f2f2f2;}
+
+#customers tr:hover {background-color: #ddd;}
+
+#customers th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #4CAF50;
+  color: white;
+}
+</style>
+</head>
+<body>
+
+    <div class="wrapper">
+
+<table id="customers">
+  <tr>
+    <th>SL</th>
+    <th>Product Name</th>
+    <th>Picture</th>
+    <th>Price</th>
+    <th>Quentity</th>
+    <th>Total Price</th>
+    <th>Action</th>
+
+  </tr>
+<?php require_once ('dbcon.php');
+
+$sid = session_id();
+
+$show = "SELECT * FROM `cart` WHERE  session_id='$sid'";
+
+$ser_result = mysqli_query($db, $show);
+$i          = 1;
+$sum        = 0;
+while ($row = mysqli_fetch_array($ser_result)) {
+
+	?>
+	  <tr>
+	    <td><?php echo $i;?></td>
+	    <td><?php echo $row['pro_name'];?></td>
+	    <td>
+	      <img src="admin/medicine_pic/<?php echo $row['pro_img'];?>" alt="" width="120" height="75">
+	    </td>
+	     <td><?php echo $row['pro_price'];?></td>
+	    <td>
+	      <form action="" method="post">
+	         <input type="hidden" name="cartID" value="<?php echo $row['cart_id'];?>" class="qty_input">
+	        <input type="number" name="quentity" value="<?php echo $row['pro_qty'];?>" class="qty_input">
+	        <input type="submit" value="Update" class="qty_btn" name="update_cart">
+	      </form>
+	    </td>
+	    <td>
+	<?php
+
+	$total_price = $row['pro_price']*$row['pro_qty'];
+	echo $total_price;
+
+	?>
+
+	    </td>
+
+
+	    <td><a href="cart.php?del_ID=<?php echo $row['cart_id']?>" onclick="return confirm('Are You Sure To Delete')">Remove</a></td>
+
+	  </tr>
+
+
+	<?php
+	$sum = $sum+$total_price;
+
+	?>
+
+
+	<?php $i++;}?>
+</table>
+
+<?php
+
+require_once ('dbcon.php');
+//$sid = session_id();
+
+$showtab  = "SELECT * FROM cart WHERE session_id='$sid'";
+$tab      = mysqli_query($db, $showtab);
+$totalrow = mysqli_num_rows($tab);
+if ($totalrow) {
+
+	?>
+	<table style="float:right;text-align: left;" width="40%">
+
+	  <tr>
+	    <th>SUB Total :</th>
+	    <td><?php echo $sum;?></td>
+	  </tr>
+
+	 <!--  <tr>
+	    <th>Vat :</th>
+	    <td>10%</td>
+	  </tr> -->
+
+	  <tr>
+	    <th>Grand Total :</th>
+	    <td>
+	<?php
+
+	// $vat = $sum * 0.1;
+	$gtotal = $sum;
+	echo $gtotal;
+	?>
+
+	      </td>
+	  </tr>
+	</table>
+	<!-- <a href="test.php?s_ID=<?php echo $sid;?>" class="shop_btn">Order Now</a> -->
+	<?php
+
+} else {
+	echo "Cart Empty !! Please Shop Now...";
+	header("location:medicine.php");
+}
+
+?>
+<div class="shoping">
+  <div class="shopleft">
+    <a href="medicine.php" class="shop_btn">Contine Shoping</a>
+  </div>
+  <div class="shopright">
+      <a href="payment.php" class="shop_btn">CheckOut</a>
+  </div>
+</div>
+    </div>
+
+
+
+
+</body>
+</html>
